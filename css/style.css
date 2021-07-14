@@ -1,0 +1,32 @@
+@font-face {
+    font-family: "mera";
+    src: url(../own-font/VarelaRound-Regular.ttf);
+}
+#head{
+    width: 100vw;
+    height: 100vh;
+    background-color: gray;
+}
+.heading{
+    background-color: purple;
+    color: white;
+
+}
+.heading h2{
+    padding: 15px 0;
+}
+.col-md-8{
+    background-color: white;
+    min-height: 200px;
+}
+/* table tr:first-child{
+    background-color: blueviolet;
+    color: white;
+    font-size: 2rem;
+    font-family: "mera";
+    text-transform: capitalize;
+} */
+table tr:hover{
+    transition: all 1s ease-in-out;
+    background-color: greenyellow;
+}
