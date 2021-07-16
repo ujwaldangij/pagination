@@ -58,14 +58,21 @@ $r1=mysqli_query($con,$q1) or die("error");
 $tr= mysqli_num_rows($r1);
 $tp=ceil($tr/$limit);
 $out.="<nav aria-label='Page navigation'>
-<ul class='pagination justify-content-center'>
+<ul class='pagination justify-content-center'>";
+if ($page_no>1) {
+    # code...
+
+$out.="
   <li class='page-item'>
-    <a class='page-link'  aria-label='Previous'>
+    <a class='page-link' id='1'  aria-label='Previous'>
       <span aria-hidden='true'>&laquo;</span>
       <span class='sr-only'>Previous</span>
     </a>
   </li>
 ";
+}else{
+    $out.="";
+}
 for ($i=1; $i <=$tp ; $i++) { 
     # code...
     if ($page_no==$i) {
