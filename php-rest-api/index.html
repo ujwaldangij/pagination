@@ -93,6 +93,7 @@
           $("#load-table").append("<tr><td colspan='6'><h2>"+ data.message +"</h2></td></tr>");
         }else{
           $.each(data, function(key, value){ 
+            console.log(data);
             $("#load-table").append("<tr>" + 
                                     "<td>" + value.id + "</td>" + 
                                     "<td>" + value.student_name +"</td>" + 

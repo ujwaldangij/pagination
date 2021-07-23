@@ -1,38 +1,316 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <title>Rest-api-Web</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="icon" href="./images/2561369_phone_icon.png">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style1.css">
+    <link rel="stylesheet" href="./css/all.css">
 </head>
-  <body>
-      <div id="head">
-          <div class="container">
-              <div class="row justify-content-md-center">
-                  <div class="col-md-8">
-                      <div class="row justify-content-around bg-primary py-3" >
-                          <div class="col-md-6">
-                              <h1 class="text-white text-capitalize">php rest api curd</h1>
-                          </div>
-                          <div class="col-md-4">
-                              <label for="Search">Search:</label>
-                              <input type="search" id="search" class="form-control">
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
+
+<body>
+    <div id="head">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-md-10">
+                    <div class="row justify-content-around bg-primary p2-3">
+                        <div class="col-md-6">
+                            <h1 class="text-white text-capitalize">php rest api curd</h1>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="Search">Search:</label>
+                            <input type="search" id="search" class="form-control mb-2 mt-0">
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-12 bg-warning" id="uppertable">
+                            <form class="text-capitalize" id="f">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-3"><label for="name" class="px-2">name</label>
+                                            <input type="text" name="sname" id="name" class="form-control"
+                                                placeholder="" aria-describedby="helpId"></div>
+                                        <div class="col-md-3"><label for="age" class="px-2">age</label>
+                                            <input type="number" name="sage" class="form-control" placeholder=""
+                                                aria-describedby="helpId"></div>
+                                        <div class="col-md-3">
+                                            <label for="city" class="px-2">city</label>
+                                            <input type="text" name="scity" class="form-control" placeholder=""
+                                                aria-describedby="helpId">
+                                        </div>
+                                        <div class="col-md-3 py-3"><input type="submit" class="btn btn-lg btn-info"
+                                                value="insert" id="insert">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-success d-none" role="alert">
+                                    <strong></strong>
+                                </div>
+                                <div class="alert alert-danger d-none" role="alert">
+                                    <strong></strong>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr class="text-white text-capitalize fw-bolder bg-danger">
+                                            <th>id</th>
+                                            <th>name</th>
+                                            <th>age</th>
+                                            <th>city</th>
+                                            <th>edit</th>
+                                            <th>delete</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody id="repeted">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- model box -->
+    <div id="main">
+        <div id="outer">
+            <div id="closeicon">x</div>
+            <h3 class="text-capitalize fw-bolder text-info  text-center py-2">edit form</h3>
+            <form action="" id="o">
+                <div class="form-group mx-4">
+                    <label for="">Name</label>
+                    <input type="hidden" class="form-control" name="sid" id="n0" value="" aria-describedby="helpId"
+                        placeholder="" width="70">
+                    <input type="text" class="form-control" name="sname" id="n1" value="" aria-describedby="helpId"
+                        placeholder="" width="70">
+                </div>
+                <div class="form-group mx-4">
+                    <label for="">Age</label>
+                    <input type="text" class="form-control" name="sage" id="n2" value="" aria-describedby="helpId"
+                        placeholder="" width="70">
+                </div>
+                <div class="form-group mx-4">
+                    <label for="">City</label>
+                    <input type="text" class="form-control" name="scity" id="n3" value="" aria-describedby="helpId"
+                        placeholder="" width="70">
+                </div>
+                <div class="form-group mx-4">
+                    <button class=" btn btn-lg btn-success update">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="./js/jquery.js"></script>
+    <script>
+        // all recode for data bases!!
+        function all_recode() {
+            $("#repeted").html("");
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:8080/pagination/rest/api/selet-all-data.php",
+                success: function (response) {
+                    console.log(response);
+                    $.each(response, function (indexInformdataArray, valueOfElement) {
+                        $("#repeted").append(
+                            "<tr class='bg-white text-center text-capitalize fw-bolder'>" +
+                            "<td>" + valueOfElement.id + "</td>" +
+                            "<td>" + valueOfElement.name + "</td>" +
+                            "<td>" + valueOfElement.age + "</td>" +
+                            "<td>" + valueOfElement.city + "</td>" +
+                            "<td>" + "<button class=' btn btn-info edit' data-eid=" +
+                            valueOfElement.id + ">Edit</button>" +
+                            "</td>" +
+                            "<td>" + "<button class=' btn btn-danger delete' data-did=" +
+                            valueOfElement.id + ">Delete</button>" +
+                            "</td>" +
+                            "</tr>"
+                        );
+                    });
+                }
+            });
+        }
+
+        // gettingobject recode
+        function gettingobject(params) {
+            var formdata = $(params).serializeArray();
+            // console.log(formdata);
+            var jsobject = {};
+            for (let i = 0; i < formdata.length; i++) {
+                // console.log(formdata[i].name);
+                // console.log(formdata[i].value);
+                if (formdata[i].value == "") {
+                    return false;
+                }
+                jsobject[formdata[i].name] = formdata[i].value; //obj["key3"] = "value3";
+            }
+            // console.log(jsobject);
+            var jsonobject = JSON.stringify(jsobject);
+            return jsonobject;
+            // console.log(jsonobject);
+        }
+
+        // massage
+        function massage(msg, status) {
+            if (status == false) {
+
+                $(".alert-danger").html(msg).addClass("d-block");
+                setTimeout(function () {
+                    $(".alert-danger").slideUp().removeClass("d-block");
+                }, 4000);
+
+            } else if (status == true) {
+
+                $(".alert-success").html(msg).addClass("d-block");
+                setTimeout(function () {
+                    $(".alert-success").slideUp().removeClass("d-block");
+                }, 4000);
+
+            }
+        }
+
+
+
+        //single recode
+
+        function single() {
+            var s = gettingobject("#f");
+            if (s == false) {
+                massage("fild are empty", false)
+            } else {
+                // massage("recode insert", true)
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:8080/pagination/rest/api/testing.php",
+                    data: s,
+                    success: function (response) {
+                        massage(response.massage, response.status);
+                        $("#f").trigger("reset");
+                        all_recode();
+                    }
+                });
+            }
+            console.log(s);
+        }
+        //fuction for edit btn
+        function edit() {
+            // model box
+            $(document).on("click", ".edit", function () {
+                $("#main").css("display", "flex");
+                var eid = $(this).data("eid");
+                var eidjsobject = {
+                    sid: eid
+                };
+                var eidjson = JSON.stringify(eidjsobject);
+                console.log(eidjson);
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:8080/pagination/rest/api/select_id.php",
+                    data: eidjson,
+                    dataType: "JSON",
+                    success: function (response) {
+                        console.log(response);
+                        $("#n0").val(response[0].id);
+                        $("#n1").val(response[0].name);
+                        $("#n2").val(response[0].age);
+                        $("#n3").val(response[0].city);
+                    }
+                });
+
+            });
+            // close btn
+            $("#closeicon").on("click", function () {
+                $("#main").hide();
+            });
+            // 
+
+        }
+        // update code
+
+        function update() {
+            $(".update").on("click", function (e) {
+                e.preventDefault();
+                var s = gettingobject("#o");
+                if (s == false) {
+                    massage("fild are empty", false)
+                } else {
+                    // massage("recode insert", true)
+                    $.ajax({
+                        type: "POST",
+                        url: "http://localhost:8080/pagination/rest/api/update.php",
+                        data: s,
+                        success: function (response) {
+                            massage(response.massage, response.status);
+                            $("#o").trigger("reset");
+                            all_recode();
+                            $("#main").hide();
+                        }
+                    });
+                }
+                console.log(s);
+
+            });
+        }
+        // delete function
+        function deleted() {
+            $(document).on("click",".delete",function () {
+                var id = $(this).data("did");
+                console.log(id);
+                var idjs= {sid:id};
+                var idjson=JSON.stringify(idjs);
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:8080/pagination/rest/api/deleted.php",
+                    data: idjson,
+                    success: function (response) {
+                        all_recode();
+                        massage(response.massage, response.status);
+                    }
+                });
+            });
+        }
+
+        // start main function
+        function start() {
+            $(document).ready(function () {
+                all_recode();
+                $("#insert").on("click", function (e) {
+                    e.preventDefault();
+                    single();
+                });
+                edit();
+                update();
+                deleted();
+            });
+        }
+        start();
+    </script>
+</body>
+
 </html>
